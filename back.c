@@ -16,41 +16,15 @@ void allouer (list *nouv){
 
 //todo creating project types: end
 //todo creating project functions:start
-//? start list manipulation functions:start
-void append_in_list(list *start, list *end, char nom[30], char prenom[30], char matricule[8], char id[30]) {
-    list nouv;
-    if (*start == NULL) {
-        allouer(start);
-        //!setting data:start
-        strcpy((*start)->nom,nom);
-        strcpy((*start)->prenom,prenom);
-        strcpy((*start)->matricule,matricule);
-        strcpy((*start)->id,id);
-        //!setting data:end
-        (*start)->svt = NULL;
-        *end = *start;
-    } else {
-        allouer(&nouv);
-        //!setting data:start
-        strcpy((nouv)->nom,nom);
-        strcpy((nouv)->prenom,prenom);
-        strcpy((nouv)->matricule,matricule);
-        strcpy((nouv)->id,id);
-        //!setting data:end
-        nouv->svt = NULL;
-        (*end)->svt = nouv;
-        *end = nouv;
-    }
-}
-//? start list manipulation functions:end
+//? start list manipulation functions:start 
 void extractFieldValue(const char *jsonString, const char *fieldName, char *destination) {
     char fieldWithQuotes[30];
     snprintf(fieldWithQuotes, sizeof(fieldWithQuotes), "\"%s\"", fieldName);
 
-    char *fieldStart = strstr(jsonString, fieldWithQuotes);
+    char *fieldStart = strcasestr(jsonString, fieldWithQuotes);
 
     if (fieldStart != NULL) {
-        fieldStart += strlen(fieldWithQuotes) + 3;
+        fieldStart += strlen(fieldWithQuotes) + 3; 
 
         char *fieldEnd = strchr(fieldStart, '"'); 
 
@@ -61,6 +35,7 @@ void extractFieldValue(const char *jsonString, const char *fieldName, char *dest
         }
     }
 }
+
 //todo creating project functions:end
 
 int main() {
@@ -79,7 +54,11 @@ int main() {
     extractFieldValue(buffer,"prenom",dest);
     printf("\n%s",dest);
 
+    // fgets(buffer,1000,fPtr);
     fgets(buffer,1000,fPtr);
+    extractFieldValue(buffer,"matricule",dest);
+    printf("\n%s",dest);
+
     fgets(buffer,1000,fPtr);
     extractFieldValue(buffer,"id",dest);
     printf("\n%s",dest);
