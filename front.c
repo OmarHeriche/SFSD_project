@@ -153,7 +153,7 @@ int main(int argc, char **argv)
     gtk_init(&argc, &argv);
 //todo start window:
     GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_maximize(GTK_WINDOW(window));
+    // gtk_window_maximize(GTK_WINDOW(window));
     gtk_window_set_default_size(GTK_WINDOW(window), 500, 400);
 //todo end window:
 
@@ -195,7 +195,7 @@ for (int i = 0; i < cpt; i++)
 
     p = p->svt;
 
-    gtk_fixed_put(GTK_FIXED(fixed), box, i * 190, 100);
+    gtk_fixed_put(GTK_FIXED(fixed), box, i * 115+5, 200);
 }
 //! create buttons & add them to the fixed(vertical) :end
 
