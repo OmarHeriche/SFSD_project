@@ -174,17 +174,29 @@ int main(int argc, char **argv)
 // todo end construction list:
 
 //! create buttons & add them to the fixed(vertical) :start
-    for (int i = 0; i < cpt; i++)
-    {
-        GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-        gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->nom), TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->prenom), TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->matricule), TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->id), TRUE, TRUE, 0);
-        p=p->svt;
-        // gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p), TRUE, TRUE, 0);
-        gtk_fixed_put(GTK_FIXED(fixed), box, 170 + i * 90, 100);
-    }
+for (int i = 0; i < cpt; i++)
+{
+    GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+//? Convert pointer address to string
+    char pointerAddress[20];
+    snprintf(pointerAddress, sizeof(pointerAddress), "%p", (void *)p);
+
+//? Create a label with the pointer address
+    GtkWidget *pLabel = gtk_label_new(pointerAddress);
+    gtk_box_pack_end(GTK_BOX(box), pLabel, TRUE, TRUE, 0);
+    
+    snprintf(pointerAddress, sizeof(pointerAddress), "%p", (void *)p->svt);
+    gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->nom), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->prenom), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->matricule), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(p->id), TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(box), gtk_button_new_with_label(pointerAddress), TRUE, TRUE, 0);
+
+
+    p = p->svt;
+
+    gtk_fixed_put(GTK_FIXED(fixed), box, i * 150, 100);
+}
 //! create buttons & add them to the fixed(vertical) :end
 
     gtk_container_add(GTK_CONTAINER(window), fixed);//! append the fixed container lifih koulesh to the window (main container)
