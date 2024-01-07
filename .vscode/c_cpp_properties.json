@@ -1,0 +1,55 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/include/gtk-2.0",
+                "/opt/homebrew/Cellar/gtk+/2.24.33_2/include/gtk-2.0",
+                "/opt/homebrew/Cellar/gtk+/2.24.33_2/lib/gtk-2.0/include",
+                "/opt/homebrew/Cellar/pango/1.50.14/include/pango-1.0",
+                "/opt/homebrew/Cellar/harfbuzz/8.3.0/include/harfbuzz",
+                "/opt/homebrew/Cellar/pango/1.50.14/include/pango-1.0",
+                "/opt/homebrew/Cellar/fribidi/1.0.13/include/fribidi",
+                "/opt/homebrew/Cellar/harfbuzz/8.3.0/include/harfbuzz",
+                "/opt/homebrew/Cellar/cairo/1.18.0/include",
+                "/opt/homebrew/Cellar/at-spi2-core/2.50.0/include/atk-1.0",
+                "/opt/homebrew/Cellar/cairo/1.18.0/include/cairo",
+                "/opt/homebrew/Cellar/fontconfig/2.14.2/include",
+                "/opt/homebrew/opt/freetype/include/freetype2",
+                "/opt/homebrew/Cellar/libxext/1.3.5/include",
+                "/opt/homebrew/Cellar/libxrender/0.9.11/include",
+                "/opt/homebrew/Cellar/libx11/1.8.7/include",
+                "/opt/homebrew/Cellar/libxcb/1.16/include",
+                "/opt/homebrew/Cellar/libxau/1.0.11/include",
+                "/opt/homebrew/Cellar/libxdmcp/1.1.4/include",
+                "/opt/homebrew/Cellar/pixman/0.42.2/include/pixman-1",
+                "/opt/homebrew/Cellar/gdk-pixbuf/2.42.10_1/include/gdk-pixbuf-2.0",
+                "/opt/homebrew/opt/libpng/include/libpng16",
+                "/opt/homebrew/Cellar/libtiff/4.6.0/include",
+                "/opt/homebrew/opt/zstd/include",
+                "/opt/homebrew/Cellar/xz/5.4.5/include",
+                "/opt/homebrew/Cellar/jpeg-turbo/3.0.0/include",
+                "/opt/homebrew/Cellar/glib/2.78.3/include",
+                "/opt/homebrew/Cellar/glib/2.78.3/include/glib-2.0",
+                "/opt/homebrew/Cellar/glib/2.78.3/lib/glib-2.0/include",
+                "/opt/homebrew/opt/gettext/include",
+                "/opt/homebrew/Cellar/pcre2/10.42/include",
+                "/opt/homebrew/Cellar/xorgproto/2023.2/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/include/ffi",
+                "/opt/homebrew/Cellar/gtk+/2.24.33_2/lib",  // Additional GTK specific path
+                "/opt/homebrew/opt/gtk/lib"  // Additional GTK specific path
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+                "/opt/homebrew/lib"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}
