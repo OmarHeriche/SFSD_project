@@ -195,7 +195,7 @@ for (int i = 0; i < cpt; i++)
 
     p = p->svt;
 
-    gtk_fixed_put(GTK_FIXED(fixed), box, i * 150, 100);
+    gtk_fixed_put(GTK_FIXED(fixed), box, i * 190, 100);
 }
 //! create buttons & add them to the fixed(vertical) :end
 
