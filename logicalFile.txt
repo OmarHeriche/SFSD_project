@@ -1,0 +1,69 @@
+{
+  "Header": {
+    "FileType": "User Information",
+    "Format": "JSON",
+    "GeneratedDate": "2024-01-06"
+  },
+  "Users": [
+    {
+      "nom": "omar",
+      "prenom": "heriche",
+      "matricule": "31549206",
+      "ID": "001"
+    },
+    {
+      "nom": "rami",
+      "prenom": "foul",
+      "matricule": "31549206",
+      "ID": "002"
+    },
+    {
+      "nom": "sara",
+      "prenom": "smith",
+      "matricule": "31549207",
+      "ID": "003"
+    },
+    {
+      "nom": "john",
+      "prenom": "doe",
+      "matricule": "31549208",
+      "ID": "004"
+    },
+    {
+      "nom": "alice",
+      "prenom": "wonder",
+      "matricule": "31549209",
+      "ID": "005"
+    },
+    {
+      "nom": "bob",
+      "prenom": "ross",
+      "matricule": "31549210",
+      "ID": "006"
+    },
+    {
+      "nom": "emily",
+      "prenom": "jones",
+      "matricule": "31549211",
+      "ID": "007"
+    },
+    {
+      "nom": "michael",
+      "prenom": "scott",
+      "matricule": "31549212",
+      "ID": "008"
+    },
+    {
+      "nom": "jane",
+      "prenom": "smith",
+      "matricule": "31549213",
+      "ID": "009"
+    },
+    {
+      "nom": "peter",
+      "prenom": "parker",
+      "matricule": "31549214",
+      "ID": "010"
+    }
+  ]
+}
