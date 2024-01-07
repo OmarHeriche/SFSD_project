@@ -20,7 +20,7 @@ void allouer(list *nouv)
 }
 
 // todo creating project types: end
-void append_in_list(list *start, list *end, char nom[30], char prenom[30], char matricule[8], char id[30])
+void append_in_list(list *start, list *end, char nom[30], char prenom[30], char matricule[8], char id[30])//! hadi nrml order
 {
     list nouv;
     if (*start == NULL)
@@ -74,6 +74,37 @@ void extractFieldValue(const char *jsonString, const char *fieldName, char *dest
     }
 }
 
+//todo project functions:start
+void insertion(list *start, char nom[30], char prenom[30], char matricule[8], char id[30])
+{
+    int numId = atoi(id);
+    list prd = NULL, svt = *start;
+    list nouv;
+
+    allouer(&nouv);
+    strncat(nouv->nom, nom, sizeof(nouv->nom) - 1);
+    strncat(nouv->prenom, prenom, sizeof(nouv->prenom) - 1);
+    strncat(nouv->matricule, matricule, sizeof(nouv->matricule) - 1);
+    strncat(nouv->id, id, sizeof(nouv->id) - 1);
+    nouv->svt = NULL;
+
+    if (*start == NULL || numId < atoi(svt->id))
+    {
+        nouv->svt = *start;
+        *start = nouv;
+        return;
+    }
+
+    while (svt != NULL && numId > atoi(svt->id))
+    {
+        prd = svt;
+        svt = svt->svt;
+    }
+
+    nouv->svt = svt;
+    prd->svt = nouv;
+}
+
 void creation(FILE *fPtr, list *tete)
 {
     list start = NULL, end = NULL;
@@ -97,76 +128,9 @@ void creation(FILE *fPtr, list *tete)
         extractFieldValue(buffer, "ID", id);
         fgets(buffer, 1000, fPtr);
         fgets(buffer, 1000, fPtr);
-        append_in_list(&start, &end, nom, prenom, matricule, id);
+        insertion(&start, nom, prenom, matricule, id);
     }
     *tete = start;
-}
-
-void insertion(list *start, char nom[30], char prenom[30], char matricule[8], char id[30])
-{
-    int numId = atoi(id);
-    list prd = *start, svt = (*start)->svt;
-    list nouv;
-    if (*start == NULL)
-    {
-        allouer(start);
-        //? set data:start
-        strncat((*start)->nom, nom, sizeof((*start)->nom) - strlen((*start)->nom) - 1);
-        strncat((*start)->prenom, prenom, sizeof((*start)->prenom) - strlen((*start)->prenom) - 1);
-        strncat((*start)->matricule, matricule, sizeof((*start)->matricule) - strlen((*start)->matricule) - 1);
-        strncat((*start)->id, id, sizeof((*start)->id) - strlen((*start)->id) - 1);
-
-        //? set data:end
-        (*start)->svt = NULL;
-    }
-    else if (prd != NULL && svt == NULL)
-    {
-        if (numId < atoi(prd->id))
-        {
-            allouer(&nouv);
-            //? set data:start
-            strncat(nouv->nom, nom, sizeof(nouv->nom) - strlen(nouv->nom) - 1);
-            strncat(nouv->prenom, prenom, sizeof(nouv->prenom) - strlen(nouv->prenom) - 1);
-            strncat(nouv->matricule, matricule, sizeof(nouv->matricule) - strlen(nouv->matricule) - 1);
-            strncat(nouv->id, id, sizeof(nouv->id) - strlen(nouv->id) - 1);
-            //? set data:end
-            nouv->svt = prd;
-            prd->svt = NULL;
-            prd = nouv;
-        }
-        else
-        {
-            allouer(&nouv);
-            //? set data:start
-            strncat(nouv->nom, nom, sizeof(nouv->nom) - strlen(nouv->nom) - 1);
-            strncat(nouv->prenom, prenom, sizeof(nouv->prenom) - strlen(nouv->prenom) - 1);
-            strncat(nouv->matricule, matricule, sizeof(nouv->matricule) - strlen(nouv->matricule) - 1);
-            strncat(nouv->id, id, sizeof(nouv->id) - strlen(nouv->id) - 1);
-            //? set data:end
-            prd->svt = nouv;
-            nouv->svt = NULL;
-        }
-    }
-    else
-    {
-        while (prd != NULL)
-        {
-            if (numId <= atoi(svt->id) && numId > atoi(prd->id))
-            {
-                allouer(&nouv);
-                //? set data:start
-                strncat(nouv->nom, nom, sizeof(nouv->nom) - strlen(nouv->nom) - 1);
-                strncat(nouv->prenom, prenom, sizeof(nouv->prenom) - strlen(nouv->prenom) - 1);
-                strncat(nouv->matricule, matricule, sizeof(nouv->matricule) - strlen(nouv->matricule) - 1);
-                strncat(nouv->id, id, sizeof(nouv->id) - strlen(nouv->id) - 1);
-                //? set data:end
-                nouv->svt=svt;
-                prd->svt=nouv;
-            }
-            prd=prd->svt;
-            svt=svt->svt;
-        }
-    }
 }
 
 void print_list(list start)
@@ -179,7 +143,7 @@ void print_list(list start)
         current = current->svt;
     }
 }
-
+//todo project functions:end
 int main()
 {
     FILE *fPtr;
