@@ -105,13 +105,13 @@ void insertion(list *start, char nom[30], char prenom[30], char matricule[8], ch
     prd->svt = nouv;
 }
 
-void creation( list *tete)
+void creation(FILE *fPtr, list *tete)
 {
     list start = NULL, end = NULL;
     char buffer[1000];
     char nom[44], prenom[44], matricule[44], id[44];
 
-    FILE *fPtr = fopen("logicalFile.txt", "r");
+    fPtr = fopen("logicalFile.txt", "r");
     for (int i = 0; i < 8; i++)
     {
         fgets(buffer, 1000, fPtr); //! to skip the first 8 lines
@@ -143,36 +143,6 @@ void print_list(list start)
         current = current->svt;
     }
 }
-
-void save (list tete){
-    FILE *fPtr = fopen("logicalFile.txt", "w");
-    list p=tete;
-    char buffer[1000];
-    fputs("{\n    \"Header\": {\n    \"FileType\": \"User Information\",\n    \"Format\": \"JSON\",\n    \"GeneratedDate\": \"2024-01-06\"\n  },\n  \"Users\": [\n",fPtr);
-    while (p!=NULL){
-        fputs("    {\n",fPtr);
-        strcpy(buffer,"      \"nom\": \"");
-        strcat(buffer,p->nom);
-        strcat(buffer,"\",\n");
-        fputs(buffer,fPtr);
-        strcpy(buffer,"      \"prenom\": \"");
-        strcat(buffer,p->prenom);
-        strcat(buffer,"\",\n");
-        fputs(buffer,fPtr);
-        strcpy(buffer,"      \"matricule\": \"");
-        strcat(buffer,p->matricule);
-        strcat(buffer,"\",\n");
-        fputs(buffer,fPtr);
-        strcpy(buffer,"      \"ID\": \"");
-        strcat(buffer,p->id);
-        strcat(buffer,"\"\n");
-        fputs(buffer,fPtr);
-        fputs("    },\n",fPtr);
-        p=p->svt;
-    }
-    fputs("  ]\n}",fPtr);
-}
-
 void rechercheById(list start, char id[30])
 {
     int numId = atoi(id);
@@ -227,42 +197,10 @@ void deleteById(list *start, char id[30])
 //todo project functions:end
 int main()
 {
+    FILE *fPtr;
     list start = NULL, end = NULL;
-    int choise;
-    char nom[30], prenom[30],  matricule[8],  id[30];
-    creation(&start);
-    while (true)
-    {
-        printf("\nenter your choise:\n1:to add\n2:to delete\n3:get single one:\n4:show\n5:save\n");
-        scanf("%d",&choise);
-        if (choise==1){
-            printf("\nenter the name:",nom);
-            scanf("%s",&nom);
-            printf("\nenter the prenom:",prenom);
-            scanf("%s",&prenom);
-            printf("\nenter the matricule:",matricule);
-            scanf("%s",&matricule);
-            printf("\nenter the id:",id);
-            scanf("%s",&id);
-            insertion(&start,nom,prenom,matricule,id);
-        }else if (choise==2)
-        {
-            printf("\nenter the id:",id);
-            scanf("%s",&id);
-            deleteById(&start,id);
-        }else if (choise==3)
-        {
-            printf("\nenter the id:",id);
-            scanf("%s",&id);
-            rechercheById(start,id);
-        }else if (choise==4)
-        {
-            print_list(start);
-        }else if (choise==5){
-            printf("\nevery thing get saved:)");
-            break;
-        }
-    }
-    save(start);
+    creation(fPtr, &start);
+    rechercheById(start,"007");
+    // print_list(start);
     return 0;
 }

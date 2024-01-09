@@ -1,8 +1,7 @@
 {
     "Header": {
     "FileType": "User Information",
-    "Format": "JSON",
-    "GeneratedDate": "2024-01-06"
+    "Format": "JSON",    "GeneratedDate": "2024-01-06"
   },
   "Users": [
     {
@@ -82,6 +81,6 @@
       "prenom": "force",
       "matricule": "3154921",
       "ID": "013"
-    },
+    }
   ]
 }
