@@ -54,12 +54,28 @@ void append_in_list(list *start, list *end, char nom[30], char prenom[30], char 
     }
 }
 
+char *case_str(const char *haystack, const char *needle)
+{
+    size_t needle_len = strlen(needle);
+
+    while (*haystack)
+    {
+        if (_strnicmp(haystack, needle, needle_len) == 0)
+        {
+            return (char *)haystack;
+        }
+        haystack++;
+    }
+
+    return NULL;
+}
+
 void extractFieldValue(const char *jsonString, const char *fieldName, char *destination)
 {
     char fieldWithQuotes[30];
     snprintf(fieldWithQuotes, sizeof(fieldWithQuotes), "\"%s\"", fieldName);
 
-    char *fieldStart = strcasestr(jsonString, fieldWithQuotes);
+    char *fieldStart = case_str(jsonString, fieldWithQuotes);
 
     if (fieldStart != NULL)
     {
@@ -145,6 +161,8 @@ void print_list(list start)
         current = current->svt;
     }
 }
+
+
 // todo project functions:end
 //! the back : end
 
