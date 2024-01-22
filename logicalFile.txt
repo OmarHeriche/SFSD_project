@@ -6,12 +6,6 @@
   },
   "Users": [
     {
-      "nom": "omar",
-      "prenom": "heriche",
-      "matricule": "3154920",
-      "ID": "001"
-    },
-    {
       "nom": "sara",
       "prenom": "smith",
       "matricule": "3154920",
@@ -22,18 +16,6 @@
       "prenom": "doe",
       "matricule": "3154920",
       "ID": "004"
-    },
-    {
-      "nom": "alice",
-      "prenom": "wonder",
-      "matricule": "3154920",
-      "ID": "005"
-    },
-    {
-      "nom": "bob",
-      "prenom": "ross",
-      "matricule": "3154921",
-      "ID": "006"
     },
     {
       "nom": "emily",
@@ -78,10 +60,10 @@
       "ID": "013"
     },
     {
-      "nom": "last",
-      "prenom": "one",
-      "matricule": "234",
-      "ID": "33"
+      "nom": "after",
+      "prenom": "push",
+      "matricule": "23",
+      "ID": "23"
     },
   ]
 }
