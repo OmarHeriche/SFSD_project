@@ -49,7 +49,7 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "macos-clang-arm64"
-        }
+        },
         {
             "name": "Win32",
             "includePath": [

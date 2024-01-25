@@ -233,7 +233,7 @@ void on_create_clicked(GtkButton *button, gpointer user_data)
 
     fclose(fPtr);
 
-    update_text_view();
+     
 }
 
 // Function ta3 insertion button
@@ -280,7 +280,7 @@ void on_delete_clicked(GtkButton *button, gpointer user_data)
         // Call the deleteById function
         deleteById(&start, id);
 
-        update_text_view();
+         
     }
     gtk_widget_destroy(dialog);
 }
@@ -321,7 +321,7 @@ void on_insert_button_clicked(GtkButton *button, gpointer user_data)
     
     insertion(&start, nom, prenom, matricule, id);
     
-    update_text_view();
+     
     
     gtk_widget_hide(GTK_WIDGET(insert_window));
 }
@@ -379,7 +379,7 @@ int main(int argc, char **argv)
     gtk_box_pack_start(GTK_BOX(hbox), delete_button, TRUE, TRUE, 0);
 
     //search
-    GtkWidget *search_button = gtk_button_new_with_label("Search");
+    GtkWidget *search_button = gtk_button_new_with_label("quit");
     
     g_signal_connect(search_button, "clicked", G_CALLBACK(on_search_clicked), NULL);
 
